@@ -67,8 +67,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           platforms: ${{ github.event_name != 'pull_request' && env.platforms || '' }}
           pull: true
-          sbom: true
-          provenance: true
+          sbom: ${{ github.event_name != 'pull_request' }}
+          provenance: ${{ github.event_name != 'pull_request' }}
 
       - name: Run Grype vulnerability scanner
         uses: anchore/scan-action@4be3c24559b430723e51858969965e163b196957 # v3.3.5
