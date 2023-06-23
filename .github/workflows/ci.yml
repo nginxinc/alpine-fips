@@ -91,3 +91,4 @@ jobs:
           major-label: "change"
           publish: ${{ startsWith(github.ref, 'refs/tags/') }}
           collapse-after: 20
+        if: ${{ github.event_name != 'pull_request' }}
