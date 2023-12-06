@@ -12,8 +12,10 @@ chore:
 
 documentation:
   - head-branch: ['^docs/', '^doc/']
-  - changed-files: '**/*.md'
+  - changed-files:
+    - any-glob-to-any-file: '**/*.md'
 
 dependencies:
   - head-branch: ['^deps/', '^dep/', '^dependabot/']
-  - changed-files: ['go.mod', 'go.sum']
+  - changed-files:
+    - any-glob-to-any-file: ['go.mod', 'go.sum']
