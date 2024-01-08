@@ -1,4 +1,4 @@
-FROM alpine:3.19
+FROM alpine:3.17
 
 ARG OPENSSL_VERSION=3.0.8
 
