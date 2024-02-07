@@ -68,7 +68,7 @@ jobs:
           load: ${{ github.event_name == 'pull_request' }}
           push: ${{ github.event_name != 'pull_request' }}
           platforms: ${{ github.event_name != 'pull_request' && env.platforms || '' }}
-          annotations: ${{ steps.meta.outputs.annotations }}
+          annotations: ${{ github.event_name != 'pull_request' && steps.meta.outputs.annotations || '' }}
           pull: true
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
