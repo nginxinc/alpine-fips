@@ -74,7 +74,7 @@ jobs:
           provenance: ${{ github.event_name != 'pull_request' }}
 
       - name: Run Grype vulnerability scanner
-        uses: anchore/scan-action@c35e932c2a7c572bfdb1c3dbcdadb2d4fc62418d # v3.6.1
+        uses: anchore/scan-action@3343887d815d7b07465f6fdcd395bd66508d486a # v3.6.4
         continue-on-error: true
         id: scan
         with:
