@@ -11,6 +11,6 @@ RUN apk add --no-cache --virtual .build-deps \
     && make \
     && make install_fips \
     && apk del .build-deps \
-    && rm -rf openssl-${OPENSSL_VERSION}.tar.gz openssl-${OPENSSL_VERSION}
+    && cd .. && rm -rf openssl-${OPENSSL_VERSION}.tar.gz openssl-${OPENSSL_VERSION}
 
 COPY openssl.cnf /etc/ssl/openssl.cnf
