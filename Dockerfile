@@ -1,6 +1,6 @@
 FROM alpine:3.19
 
-ARG OPENSSL_VERSION=3.0.8
+ARG OPENSSL_VERSION=3.0.9
 
 RUN apk add --no-cache --virtual .build-deps \
     make gcc libgcc musl-dev linux-headers perl vim \
