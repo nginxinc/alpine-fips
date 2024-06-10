@@ -1,6 +1,9 @@
-FROM alpine:3.19
-
+# syntax=docker/dockerfile:1.6
+ARG BUILD_OS=alpine:3.19
 ARG OPENSSL_VERSION=3.0.9
+
+FROM ${BUILD_OS} as alpine
+ARG OPENSSL_VERSION
 
 RUN apk add --no-cache --virtual .build-deps \
     make gcc libgcc musl-dev linux-headers perl vim \
@@ -11,6 +14,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && make \
     && make install_fips \
     && apk del .build-deps \
-    && cd .. && rm -rf openssl-${OPENSSL_VERSION}.tar.gz openssl-${OPENSSL_VERSION}
+    && cd .. && rm -rf openssl-${OPENSSL_VERSION}.tar.gz openssl-${OPENSSL_VERSION} \
+    && apk upgrade --no-cache -U
 
 COPY openssl.cnf /etc/ssl/openssl.cnf
