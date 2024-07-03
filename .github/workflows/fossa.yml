@@ -1,0 +1,30 @@
+name: Fossa
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+      - "LICENSE"
+
+concurrency:
+  group: ${{ github.ref_name }}-fossa
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    name: Fossa
+    runs-on: ubuntu-22.04
+    if: ${{ github.event.repository.fork == false }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Scan
+        uses: fossas/fossa-action@47ef11b1e1e3812e88dae436ccbd2d0cbd1adab0 # v1.3.3
+        with:
+          api-key: ${{ secrets.FOSSA_TOKEN }}
