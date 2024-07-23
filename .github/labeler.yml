@@ -1,21 +1,21 @@
 change:
-  - head-branch: ['^change/']
+  - head-branch: ["^change/"]
 
 enhancement:
-  - head-branch: ['^feature/', '^feat/', '^enhancement/', '^enh/']
+  - head-branch: ["^feature/", "^feat/", "^enhancement/", "^enh/"]
 
 bug:
-  - head-branch: ['^fix/', '^bug/']
+  - head-branch: ["^fix/", "^bug/"]
 
 chore:
-  - head-branch: ['^chore/']
+  - head-branch: ["^chore/"]
 
 documentation:
-  - head-branch: ['^docs/', '^doc/']
+  - head-branch: ["^docs/", "^doc/"]
   - changed-files:
-    - any-glob-to-any-file: '**/*.md'
+      - any-glob-to-any-file: "**/*.md"
 
 dependencies:
-  - head-branch: ['^deps/', '^dep/', '^dependabot/']
+  - head-branch: ["^deps/", "^dep/", "^dependabot/"]
   - changed-files:
-    - any-glob-to-any-file: ['go.mod', 'go.sum']
+      - any-glob-to-any-file: ["go.mod", "go.sum"]

@@ -1,0 +1,54 @@
+name: Lint
+
+on:
+  pull_request:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: ${{ github.ref_name }}-lint
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  actionlint:
+    name: Actionlint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Lint Actions
+        uses: reviewdog/action-actionlint@afad3b6ab835e5611bda8c8193377e2d5c21413d # v1.51.0
+        with:
+          actionlint_flags: -shellcheck ""
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Lint Markdown
+        uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8 # v16.0.0
+        with:
+          config: .markdownlint-cli2.yaml
+          globs: "**/*.md"
+          fix: false
+
+  yaml-lint:
+    name: YAML lint
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Lint YAML
+        uses: reviewdog/action-yamllint@508148c0d959b166798f9792d1b29dddcac37348 # v1.16.0
