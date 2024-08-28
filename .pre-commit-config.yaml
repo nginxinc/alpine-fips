@@ -8,7 +8,6 @@ repos:
       - id: end-of-file-fixer
       - id: check-yaml
         args: [--allow-multiple-documents]
-      - id: check-ast
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
@@ -22,8 +21,8 @@ repos:
       - id: mixed-line-ending
         args: [--fix=lf]
       - id: no-commit-to-branch
-      - id: requirements-txt-fixer
       - id: fix-byte-order-marker
+      - id: detect-private-key
 
   - repo: https://github.com/gitleaks/gitleaks
     rev: v8.18.4
@@ -39,3 +38,6 @@ repos:
     rev: v1.35.1
     hooks:
       - id: yamllint
+
+ci:
+  autoupdate_schedule: quarterly # We use renovate for more frequent updates and there's no way to disable autoupdate
