@@ -74,7 +74,7 @@ jobs:
           pull: true
           sbom: ${{ github.event_name != 'pull_request' }}
           provenance: ${{ github.event_name != 'pull_request' }}
-          build-args: | 
+          build-args: |
             BUILD_OS=alpine:${{ matrix.image }}
             OPENSSL_VERSION=${{ matrix.openssl_version }}
 
