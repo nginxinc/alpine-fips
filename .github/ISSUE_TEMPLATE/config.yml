@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: General inquiries
-    url: https://github.com/nginxinc/alpine-fips/discussions
+    url: https://github.com/nginx/alpine-fips/discussions
     about: Please use Discussions for all other questions.
