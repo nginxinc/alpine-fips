@@ -47,7 +47,7 @@ jobs:
         uses: docker/metadata-action@369eb591f429131d6889c46b94e711f089e6ca96 # v5.6.1
         with:
           images: |
-            name=ghcr.io/nginxinc/alpine-fips
+            name=ghcr.io/nginx/alpine-fips
           tags: |
             type=edge
             type=ref,event=pr,suffix=-alpine${{ matrix.image }}
@@ -83,7 +83,7 @@ jobs:
         continue-on-error: true
         id: scan
         with:
-          image: ghcr.io/nginxinc/alpine-fips:${{ steps.meta.outputs.version }}
+          image: ghcr.io/nginx/alpine-fips:${{ steps.meta.outputs.version }}
           only-fixed: true
           add-cpes-if-none: true
 
